@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>开云 – 故事 · 收藏 · 再访</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f7fafc;
+      color: #1f2f3b;
+      line-height: 1.7;
+      padding: 1.8rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 780px;
+      width: 100%;
+    }
+
+    /* 网格卡片背景氛围 */
+    .subgrid-card {
+      background-color: #ffffff;
+      border-radius: 28px;
+      padding: 2.2rem 1.8rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 28px rgba(0, 70, 60, 0.04), 0 2px 8px rgba(0, 60, 50, 0.02);
+      background-image: 
+        linear-gradient(90deg, rgba(0, 150, 120, 0.02) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(0, 150, 120, 0.02) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: 0 0;
+      transition: all 0.2s ease;
+    }
+
+    /* 开场短句 – 温和又带一点记忆感 */
+    .greeting {
+      font-size: 2rem;
+      font-weight: 440;
+      letter-spacing: -0.01em;
+      color: #16594a;
+      margin-bottom: 0.2rem;
+      line-height: 1.3;
+      border-left: 5px solid #2faa8c;
+      padding-left: 1.2rem;
+    }
+
+    .greeting-sub {
+      font-size: 1rem;
+      color: #3f675b;
+      margin-top: 0.2rem;
+      margin-bottom: 1.6rem;
+      padding-left: 1.9rem;
+      font-weight: 350;
+    }
+
+    h2, .section-title {
+      font-size: 1.5rem;
+      font-weight: 450;
+      color: #175b4b;
+      margin: 1.4rem 0 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title:before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #2faa8c;
+      border-radius: 50%;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0 0.8rem;
+    }
+
+    .feature-item {
+      background: #f3faf8;
+      padding: 1rem 1.2rem;
+      border-radius: 24px;
+      border: 1px solid rgba(47, 170, 140, 0.2);
+      transition: background 0.15s;
+    }
+
+    .feature-item span {
+      font-weight: 470;
+      color: #1b6e5b;
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 1.1rem;
+    }
+
+    .feature-item p {
+      font-size: 0.95rem;
+      color: #2f4c44;
+      margin: 0;
+    }
+
+    .story-block {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem 1.8rem 2.2rem;
+      margin: 1.6rem 0 2rem;
+      box-shadow: 0 4px 16px rgba(0, 80, 65, 0.03);
+    }
+
+    .story-block p {
+      margin-bottom: 1rem;
+    }
+
+    .story-block .muted-link {
+      color: #1b795f;
+      text-decoration: none;
+      border-bottom: 1px solid #7bcbb8;
+      transition: border 0.1s;
+    }
+
+    .story-block .muted-link:hover {
+      border-bottom: 2px solid #1f8f72;
+    }
+
+    .gentle-cta {
+      margin: 2rem 0 1.2rem;
+      background: #ecf9f5;
+      border-radius: 40px;
+      padding: 1.5rem 1.8rem;
+      text-align: left;
+      border: 1px solid #b7e2d6;
+    }
+
+    .gentle-cta a {
+      color: #115d49;
+      font-weight: 470;
+      text-decoration: none;
+      border-bottom: 2px solid #42b898;
+      transition: background 0.15s, color 0.1s;
+    }
+
+    .gentle-cta a:hover {
+      background: #d6f0e9;
+      color: #0a4637;
+    }
+
+    .faq-mini {
+      margin: 1.8rem 0 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .faq-row {
+      background: white;
+      padding: 0.8rem 1.4rem;
+      border-radius: 30px;
+      border: 1px solid #d7ebe5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .faq-q {
+      font-weight: 450;
+      color: #1a5a4b;
+    }
+
+    .faq-a {
+      font-size: 0.9rem;
+      color: #3b6659;
+      background: #f0faf7;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+    }
+
+    .closing-note {
+      text-align: center;
+      margin: 2.2rem 0 1rem;
+      color: #366b5c;
+      font-size: 0.95rem;
+      border-top: 1px solid #cde3dd;
+      padding-top: 1.8rem;
+      letter-spacing: 0.3px;
+    }
+
+    .small-note {
+      color: #578074;
+      font-size: 0.85rem;
+      margin-top: 0.8rem;
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 1rem 0.8rem;
+      }
+      .subgrid-card {
+        padding: 1.6rem 1rem;
+      }
+      .greeting {
+        font-size: 1.6rem;
+        padding-left: 1rem;
+      }
+      .greeting-sub {
+        padding-left: 1.4rem;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      .faq-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 开场短句 -->
+  <div class="subgrid-card">
+    <div class="greeting">又见面了。</div>
+    <div class="greeting-sub">收藏夹里的角落，总能遇见熟悉的风景。</div>
+  </div>
+
+  <!-- 承接段落：再次访问与持续关注 -->
+  <div class="story-block">
+    <p>有时候，我们并不是第一次来这里。也许某天偶然路过，顺手把页面收进了书签；又或者只是匆匆一瞥，却记住了名字。几天后、几周后，当你再次点开那个书签——<strong>熟悉，但又不完全相同</strong>。</p>
+    <p>这正是持续关注带来的微妙感受。你不需要刻意记住什么，但每次回来，总有些新的片段、新的角度在等你。关于信息、内容，或者仅仅是某种<strong>舒服的节奏</strong>。</p>
+    <p>如果你也习惯把喜欢的站点放在手边，那么这里值得一个固定的位置。<a href="https://k-login.com.cn" class="muted-link">开云官网</a>本身就像一本不断更新的笔记——不喧哗，但总有一些值得你停下来看两眼的东西。</p>
+  </div>
+
+  <!-- 特点列表：网格卡片，蓝绿点缀 -->
+  <div class="subgrid-card" style="margin-top: 0.2rem;">
+    <div class="section-title">为什么一再回来</div>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <span>📑 收藏友好</span>
+        <p>结构清晰，不频繁变动布局。无论何时打开，都能快速找到熟悉的入口。</p>
+      </div>
+      <div class="feature-item">
+        <span>🔄 内容更新节奏</span>
+        <p>没有轰炸式推送，但每次访问都能发现一些用心调整的细节。</p>
+      </div>
+      <div class="feature-item">
+        <span>🧘 低干扰阅读</span>
+        <p>视觉上保持克制，蓝绿点缀让眼睛舒服，不会被花哨元素打断思路。</p>
+      </div>
+      <div class="feature-item">
+        <span>📌 长期陪伴感</span>
+        <p>不追求一次性惊艳，而是希望成为你浏览器里那个「常驻标签页」。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 温和场景 + 自然嵌入链接 -->
+  <div class="gentle-cta">
+    <span style="display: block; font-weight: 420; margin-bottom: 0.3rem;">📎 如果你还记得这里</span>
+    不妨把 <a href="https://k-login.com.cn">开云官网</a> 放到书签栏。下次想找个安静、有内容的地方浏览时，它会是个不错的选择。
+  </div>
+
+  <!-- FAQ 摘要（温和提示风格） -->
+  <div class="subgrid-card" style="padding-bottom: 1.6rem;">
+    <div class="section-title">一些你可能想问的</div>
+    <div class="faq-mini">
+      <div class="faq-row">
+        <span class="faq-q">🔹 需要注册才能浏览吗？</span>
+        <span class="faq-a">不用，直接访问即可</span>
+      </div>
+      <div class="faq-row">
+        <span class="faq-q">🔹 内容多久会更新一次？</span>
+        <span class="faq-a">没有固定周期，但值得再次回访</span>
+      </div>
+      <div class="faq-row">
+        <span class="faq-q">🔹 移动端体验如何？</span>
+        <span class="faq-a">针对手机优化，卡片和文字自动适配</span>
+      </div>
+    </div>
+    <div style="margin-top: 0.5rem; font-size: 0.9rem; color: #417a6a; background: #eef8f5; padding: 0.4rem 1rem; border-radius: 40px; display: inline-block;">
+      ⏳ 更多内容可以慢慢探索
+    </div>
+  </div>
+
+  <!-- 温和结尾 -->
+  <div class="closing-note">
+    <span style="display: block; margin-bottom: 0.6rem; font-size: 1.2rem;">🌱</span>
+    感谢你的再次到访。无论未来何时想起，这里都在。<br>
+    <span class="small-note">收藏、回看、慢慢读 — 每一次都算数。</span>
+  </div>
+
+  <!-- 隐式种子标记（不显示） -->
+  <div style="display: none;">种子: 05f0962fa525b578</div>
+
+</div>
+</body>
+</html>

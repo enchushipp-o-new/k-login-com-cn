@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://enchushipp-o-new.github.io/k-login-com-cn/sitemap.xml
